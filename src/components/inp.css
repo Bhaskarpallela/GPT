@@ -1,0 +1,11 @@
+#inp{
+    border: none;
+    outline: none;
+    color: white;
+}
+#inp:hover{
+    border: none;
+}
+#inp:focus{
+    border: none;
+}
