@@ -3,9 +3,9 @@ import Sidebar from './Sidebar'
 import './App.css'
 import MainContent from './MainContent'
 function App() {
-  return (
+  return(
     <>
-    <div style={{background:'rgba(33,33,33,255)'}} className='grid grid-cols-2 h-screen w-full '>
+    <div style={{background:'#212121'}} className='flex h-screen w-full'>
     <Sidebar/>
     <MainContent/>
     </div>
