@@ -1,5 +1,4 @@
 import Search from "./components/input"
-import './App.css'
 export default function MainContent(){
     function NewChat(){
         return(
