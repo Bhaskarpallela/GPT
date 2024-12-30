@@ -1,28 +1,37 @@
 import { useState } from "react"
 import "./App.css"
+import Upgradecompo from './components/Upgradecompo'
+import SidebarGroup from "./components/SidebarGroup"
+import { SideAtom } from "./components/Recoilatom"
+import { useRecoilState, useRecoilValue } from "recoil"
 
 export default function Sidebar(){
-  const [sideToggle,setsideToggle]=useState(false)
+  //const [sideToggle,setsideToggle]=useState(true)
+  
+  const[sidebarToggle,setsideToggle]=useRecoilState(SideAtom)
+  
   function MyIconComponent() {
     function changeToggle(){
         setsideToggle((prevState)=> !prevState)
       }
     return (
+      <div className="flex items-center justify-center p-2 rounded-lg hover:bg-[#2f2f2f]">
+      <button className="  ">
      <svg width="24" height="24" 
      viewBox="0 0 24 24" fill="none" 
      xmlns="http://www.w3.org/2000/svg" 
      onClick={changeToggle}
-     color="white"
+     color='#b4b4b4'
      class="icon-xl-heavy">
      <path 
      clip-rule="evenodd" d="M8.85719 3H15.1428C16.2266 2.99999 17.1007 2.99998
       17.8086 3.05782C18.5375 3.11737 19.1777 3.24318 19.77 3.54497C20.7108 
       4.02433 21.4757 4.78924 21.955 5.73005C22.2568 6.32234 22.3826 6.96253 
       22.4422 7.69138C22.5 8.39925 22.5 9.27339 22.5 10.3572V13.6428C22.5 14.7266
-       22.5 15.6008 22.4422 16.3086C22.3826 17.0375 22.2568 17.6777 21.955 18.27C21.4757 
-       19.2108 20.7108 19.9757 19.77 20.455C19.1777 20.7568 18.5375 20.8826 17.8086 20.9422C17.1008
-        21 16.2266 21 15.1428 21H8.85717C7.77339 21 6.89925 21 6.19138 20.9422C5.46253
-         20.8826 4.82234 20.7568 4.23005 20.455C3.28924 19.9757 2.52433 19.2108 2.04497
+      22.5 15.6008 22.4422 16.3086C22.3826 17.0375 22.2568 17.6777 21.955 18.27C21.4757 
+      19.2108 20.7108 19.9757 19.77 20.455C19.1777 20.7568 18.5375 20.8826 17.8086 20.9422C17.1008
+      21 16.2266 21 15.1428 21H8.85717C7.77339 21 6.89925 21 6.19138 20.9422C5.46253
+      20.8826 4.82234 20.7568 4.23005 20.455C3.28924 19.9757 2.52433 19.2108 2.04497
           18.27C1.74318 17.6777 1.61737 17.0375 1.55782 16.3086C1.49998 15.6007 1.49999 
           14.7266 1.5 13.6428V10.3572C1.49999 9.27341 1.49998 8.39926 1.55782 7.69138C1.61737 
           6.96253 1.74318 6.32234 2.04497 5.73005C2.52433 4.78924 3.28924 4.02433 4.23005 
@@ -39,12 +48,43 @@ export default function Sidebar(){
             5H11.5ZM5 8.5C5 7.94772 5.44772 7.5 6 7.5H7C7.55229 7.5 8 7.94772 8 8.5C8 9.05229 7.55229 9.5 7 9.5H6C5.44772 9.5 5
             9.05229 5 8.5ZM5 12C5 11.4477 5.44772 11 6 11H7C7.55229 11 8 11.4477 8 12C8 12.5523 7.55229 13 7 13H6C5.44772 13 5 12.5523 5 12Z" 
             fill="currentColor"></path></svg>
+            </button>
+            </div>
     );
+  }
+  function Search(){
+    return(
+      <div className="flex p-2 justify-center items-center rounded-lg hover:bg-[#2f2f2f] ">
+      <button
+  aria-label="Ctrl K"
+  className=""
+>
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    color='#b4b4b4'
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-6 h-6"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M10.75 4.25C7.16015 4.25 4.25 7.16015 4.25 10.75C4.25 14.3399 7.16015 17.25 10.75 17.25C14.3399 17.25 17.25 14.3399 17.25 10.75C17.25 7.16015 14.3399 4.25 10.75 4.25ZM2.25 10.75C2.25 6.05558 6.05558 2.25 10.75 2.25C15.4444 2.25 19.25 6.05558 19.25 10.75C19.25 12.7369 18.5683 14.5645 17.426 16.0118L21.4571 20.0429C21.8476 20.4334 21.8476 21.0666 21.4571 21.4571C21.0666 21.8476 20.4334 21.8476 20.0429 21.4571L16.0118 17.426C14.5645 18.5683 12.7369 19.25 10.75 19.25C6.05558 19.25 2.25 15.4444 2.25 10.75Z"
+      fill="currentColor"
+    />
+  </svg>
+</button>
+</div>
+    )
   }
   function NewChat(){
     return(
-        <svg width="24" height="24" viewBox="0 0 24 24" color='white' fill="currentColor" xmlns="http://www.w3.org/2000/svg" 
-        class="icon-xl-heavy"><path d="M15.6729 3.91287C16.8918 2.69392 18.8682 2.69392 20.0871 3.91287C21.3061
+      <div className="flex justify-center px-2 items-center rounded-lg hover:bg-[#2f2f2f]">
+      <button className="">
+        <svg width="24" height="24" viewBox="0 0 24 24" color='#b4b4b4' fill="currentColor" xmlns="http://www.w3.org/2000/svg" 
+        className="icon-xl-heavy"><path d="M15.6729 3.91287C16.8918 2.69392 18.8682 2.69392 20.0871 3.91287C21.3061
          5.13182 21.3061 7.10813 20.0871 8.32708L14.1499 14.2643C13.3849 15.0293 12.3925 15.5255 11.3215 
          15.6785L9.14142 15.9899C8.82983 16.0344 8.51546 15.9297 8.29289 15.7071C8.07033 15.4845 7.96554 
          15.1701 8.01005 14.8586L8.32149 12.6785C8.47449 11.6075 8.97072 10.615 9.7357 9.85006L15.6729
@@ -68,17 +108,32 @@ export default function Sidebar(){
                  7.69134C3.11737 6.96249 3.24318 6.3223 3.54497 5.73001C4.02433 4.7892 4.78924 4.0243 5.73005
                   3.54493C6.28633 3.26149 6.88399 3.13358 7.55735 3.06961C8.21919 3.00673 9.02103 3.00083 9.99922 
                   3.00007C10.5515 2.99964 10.9996 3.447 11 3.99929Z" fill="currentColor"></path></svg>
+                  </button>
+                  </div>
     )
 }
     return(
       <div className={`${
-        sideToggle ? "w-64" : "w-0"
-      } flex-col transition-all duration-300 delay-75 h-screen bg-black overflow-hidden`}>
+        sidebarToggle ? "w-[260px]" : "w-0"
+      } flex-col transition-all duration-300 delay-75 h-screen bg-[#171717] overflow-hidden`}>
+     <div className='h-[56px] pl-[12px] pr-[12px] mt-2.5'>
+       <div className="flex-row items-center">
+       <div className="flex justify-between"> 
        <div>
-       <div id="SideIcon" className="fixed ml-3 mt-2 p-2"><MyIconComponent/></div>
-        <div className="ml-52 pt-3"><NewChat/></div>
+       <MyIconComponent/>
        </div>
-        
-        </div>   
+       <div className="flex-1 items-center">
+       <div className="flex justify-self-end">
+        <Search/>
+        <NewChat/>
+        </div>
+        </div>
+       </div>
+       </div>
+       
+      </div>  
+      <SidebarGroup/>
+     
+    </div> 
     )
 }
